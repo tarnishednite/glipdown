@@ -35,7 +35,7 @@ var Markdown = function(raw, options) {
 			proto_and_slashes, 
 			protocol,
 			junk,
-			junkpoint5,
+			tld,
 			junk1,
 			junk2,
 			junk3,
