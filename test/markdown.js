@@ -159,12 +159,12 @@ _.each(tests, function(test) {
 		}
 		else {
 			console.warn("############################################");
-			//console.warn(str);
+			console.warn(str);
 			console.warn("--------------------------------------------");
 			Markdown(str, { dont_escape: true, warns: true });
 			console.warn("--------------------------------------------");
-			//console.warn(marked); 
-			//console.warn(marked.length, 'vs', test[settings.key]);
+			console.warn(marked); 
+			console.warn(marked.length, 'vs', test[settings.key]);
 			console.warn("############################################");
 			console.warn("FAILED - " + marked.length + " bytes " + taken + "ms");
 		}
