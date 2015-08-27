@@ -1,6 +1,8 @@
 var _ = _ || null;
+var tlds = [];
 if ((typeof require != 'undefined') && !_) {
 	var _ = require('underscore');
+   var tlds = require('./tlds');
 }
 
 var Markdown = function(raw, options) {
@@ -71,6 +73,11 @@ var Markdown = function(raw, options) {
 					return full_match;
 				}
 			}
+         console.log('HERE HAVE >'+tld.toLowerCase());
+         if ( !tlds[tld.toLowerCase()] && !tld.toLowerCase().match(/^(\d{1,3}\.?){3}$/))
+         {
+            return full_match;
+         }
 			//console.warn("nomatch:", +new Date() - sub_bench);
 			return "<a href='" + 
 				(
@@ -184,7 +191,7 @@ Markdown.is_in_url = function(full_match, text, offset, full_str, already_in_url
 };
 
 Markdown.url_regex = /^((ftp|https?):\/\/)?[-\w]+\.([-\w]+\.)*(\d+\.\d+\.\d+|[-A-Za-z]+)(:\d+)?($|(\/\S?(\/\S)*\/?)|(\#\S?)|(\?\S?))/i;
-Markdown.global_url_regex = /(([a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\%\_\`\{\|\}\~\.]+@)?)(((ftp|https?):\/\/)?[-\w]+\.([-\w]+\.)*(\d+\.\d+\.\d+|[-A-Za-z]+)(:\d+)?(((\/([A-Za-z0-9-\._~:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=])*)+)\??([A-Za-z0-9-\._~:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\%])*)?)([^A-Za-z]|$)/gi; 
+Markdown.global_url_regex = /(([a-z0-9\!\#\$\%\&\'\*\+\-\/\=\?\%\_\`\{\|\}\~\.]+@)?)(((ftp|https?):\/\/)?[-\w]+\.([-\w]+\.)*(\d+\.\d+\.\d+|[-a-z]+)(:\d+)?(((\/([a-z0-9-\._~:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=])*)+)\??([a-z0-9-\._~:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\%])*)?)([^a-z]|$)/gi; 
 
 var Markdown_For_Search = function(raw, options) {
 	options = options || {};
