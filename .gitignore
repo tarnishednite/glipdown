@@ -1,2 +1,4 @@
 node_modules/
 *.swp
+etc/tlds.js
+etc/md5

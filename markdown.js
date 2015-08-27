@@ -2,7 +2,7 @@ var _ = _ || null;
 var tlds = [];
 if ((typeof require != 'undefined') && !_) {
 	var _ = require('underscore');
-   var tlds = require('./tlds');
+   var tlds = require('./etc/tlds');
 }
 
 var Markdown = function(raw, options) {
@@ -73,7 +73,6 @@ var Markdown = function(raw, options) {
 					return full_match;
 				}
 			}
-         console.log('HERE HAVE >'+tld.toLowerCase());
          if ( !tlds[tld.toLowerCase()] && !tld.toLowerCase().match(/^(\d{1,3}\.?){3}$/))
          {
             return full_match;
